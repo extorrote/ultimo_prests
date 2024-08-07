@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {%load static %}
+    <meta charset="UTF-8">
+    {%comment%}  META TAGS {%endcomment%}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="programador" content="christian stephen">
+        <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+        <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="content-language" content="en, es">
+        <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+        <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+        <meta property="og:title" content="Puerto Vallarta Web Developer">
+        <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+        <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    {%comment%} FIN  META TAGS {%endcomment%}
+
+    <title>Gastos del Día</title>
+    <link rel="stylesheet" href="{%static 'css/lista_gastos.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h1>Todos los Gastos</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for gasto in gastos %}
+                    <tr>
+                        <td>{{ gasto.descripcion_gasto }}</td>
+                        <td>${{ gasto.monto_gasto }}</td>
+                        <td>{{ gasto.created_at.date }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3" class="no-gastos">No hay gastos para mostrar.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="total">Total: ${{ total|default:"0" }}
+        <details>
+            
+            <summary> Opciones</summary>
+        {%if user.username == 'paquete2' %}
+            <a href="{% url 'paquete2:lista_gastos_del_dia' %}" class="button">Gastos de Hoy</a>
+            <a href="{% url 'paquete2:gastos_semanales' %}" class="button">Gastos de la Semana</a>
+            <a href="{% url 'paquete2:gastos_del_mes' %}" class="button">Gastos del Mes</a>
+            <a href="{% url 'paquete2:agregar_gasto' %}" class="button">Agregar Gasto</a>
+            <a href="{% url 'paquete2:cliente_list' %}" class="button">Lista de Clientes</a>
+
+        {%elif user.username == 'paquete3' %}
+            <a href="{% url 'paquete3:lista_gastos_del_dia' %}" class="button">Gastos de Hoy</a>
+            <a href="{% url 'paquete3:gastos_semanales' %}" class="button">Gastos de la Semana</a>
+            <a href="{% url 'paquete3:gastos_del_mes' %}" class="button">Gastos del Mes</a>
+            <a href="{% url 'paquete3:agregar_gasto' %}" class="button">Agregar Gasto</a>
+            <a href="{% url 'paquete3:cliente_list' %}" class="button">Lista de Clientes</a>
+
+        {%elif user.username == 'paquete4' %}
+            <a href="{% url 'paquete4:lista_gastos_del_dia' %}" class="button">Gastos de Hoy</a>
+            <a href="{% url 'paquete4:gastos_semanales' %}" class="button">Gastos de la Semana</a>
+            <a href="{% url 'paquete4:gastos_del_mes' %}" class="button">Gastos del Mes</a>
+            <a href="{% url 'paquete4:agregar_gasto' %}" class="button">Agregar Gasto</a>
+            <a href="{% url 'paquete4:cliente_list' %}" class="button">Lista de Clientes</a>
+
+        {%elif user.username == 'paquete5' %}
+            <a href="{% url 'paquete5:lista_gastos_del_dia' %}" class="button">Gastos de Hoy</a>
+            <a href="{% url 'paquete5:gastos_semanales' %}" class="button">Gastos de la Semana</a>
+            <a href="{% url 'paquete5:gastos_del_mes' %}" class="button">Gastos del Mes</a>
+            <a href="{% url 'paquete5:agregar_gasto' %}" class="button">Agregar Gasto</a>
+            <a href="{% url 'paquete5:cliente_list' %}" class="button">Lista de Clientes</a>
+
+
+        {%else%}
+            <a href="{% url 'prestamosapp:lista_gastos_del_dia' %}" class="button">Gastos de Hoy</a>
+            <a href="{% url 'prestamosapp:gastos_semanales' %}" class="button">Gastos de la Semana</a>
+            <a href="{% url 'prestamosapp:gastos_del_mes' %}" class="button">Gastos del Mes</a>
+            <a href="{% url 'prestamosapp:agregar_gasto' %}" class="button">Agregar Gasto</a>
+            <a href="{% url 'prestamosapp:cliente_list' %}" class="button">Lista de Clientes</a>
+        {%endif%}
+        </details>
+    </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    {%comment%}  META TAGS {%endcomment%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="programador" content="christian stephen">
+    <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="content-language" content="en, es">
+    <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+    <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+    <meta property="og:title" content="Puerto Vallarta Web Developer">
+    <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+    <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+
+    {%comment%} FIN  META TAGS {%endcomment%} 
+
+    <meta name="author" content="CHRISTHIAN STEPHEN">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <title>Cliente List</title>
+    <link rel="stylesheet" href="{% static 'css/animaciones.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lista_clientes.css' %}">
+
+    {%comment%} ESTO ES PARA EL BUSCADOR EN TIEMPO REAL {%endcomment%}
+    <script>
+        function searchClientes() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const rows = document.querySelectorAll('#client-table tbody tr');
+            let matchedRow = null;
+
+            rows.forEach(row => {
+                const nameCell = row.querySelector('td:nth-child(3)');
+                const name = nameCell.textContent.toLowerCase();
+
+                if (name.includes(query)) {
+                    row.style.display = ''; // Show the row
+                    if (!matchedRow) {
+                        matchedRow = row;
+                    }
+                } else {
+                    row.style.display = 'none'; // Hide the row
+                }
+            });
+
+            if (matchedRow) {
+                const tableBody = document.querySelector('#client-table tbody');
+                tableBody.prepend(matchedRow); // Move the matched row to the top
+            }
+        }
+    </script>   {%comment%} FIN DE SCRIPT BUSCADOR  {%endcomment%}
+</head>
+<body>
+
+    <header class="header">
+        <input type="checkbox" class="header__checkbox" id="open_menu">
+        <label for="open_menu" class="header__open-nav-button" role="button"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#17a2b8"><path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></label>
+        <div class="header__logo-container">
+            <img  width=300 src="{% static 'images/logo_turqueza.png' %}" alt="Logo">
+        </div>
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                
+                <li class="faq">
+                    <details>
+                        <summary>Menu Gastos</summary>
+                        {%if user.username == 'paquete2' %}
+                            <a class="dropdown-item" href="{% url 'paquete2:agregar_gasto' %}">Agregar Gasto</a>
+                            <a class="dropdown-item" href="{% url 'paquete2:lista_gastos_del_dia' %}">Gastos Hoy</a>
+                            <a class="dropdown-item" href="{% url 'paquete2:gastos_semanales' %}">Gastos Semana</a>
+                            <a class="dropdown-item" href="{% url 'paquete2:gastos_del_mes' %}">Gastos Mes</a>
+                            <a class="dropdown-item" href="{% url 'paquete2:todos_los_gastos' %}">Gastos Totales</a>
+
+                        {%elif user.username == 'paquete3'  %}
+                            <a class="dropdown-item" href="{% url 'paquete3:agregar_gasto' %}">Agregar Gasto</a>
+                            <a class="dropdown-item" href="{% url 'paquete3:lista_gastos_del_dia' %}">Gastos Hoy</a>
+                            <a class="dropdown-item" href="{% url 'paquete3:gastos_semanales' %}">Gastos Semana</a>
+                            <a class="dropdown-item" href="{% url 'paquete3:gastos_del_mes' %}">Gastos Mes</a>
+                            <a class="dropdown-item" href="{% url 'paquete3:todos_los_gastos' %}">Gastos Totales</a>
+
+                        {%elif user.username == 'paquete4'  %}
+                            <a class="dropdown-item" href="{% url 'paquete4:agregar_gasto' %}">Agregar Gasto</a>
+                            <a class="dropdown-item" href="{% url 'paquete4:lista_gastos_del_dia' %}">Gastos Hoy</a>
+                            <a class="dropdown-item" href="{% url 'paquete4:gastos_semanales' %}">Gastos Semana</a>
+                            <a class="dropdown-item" href="{% url 'paquete4:gastos_del_mes' %}">Gastos Mes</a>
+                            <a class="dropdown-item" href="{% url 'paquete4:todos_los_gastos' %}">Gastos Totales</a>
+                        
+                        {%elif user.username == 'paquete5'  %}
+                            <a class="dropdown-item" href="{% url 'paquete5:agregar_gasto' %}">Agregar Gasto</a>
+                            <a class="dropdown-item" href="{% url 'paquete5:lista_gastos_del_dia' %}">Gastos Hoy</a>
+                            <a class="dropdown-item" href="{% url 'paquete5:gastos_semanales' %}">Gastos Semana</a>
+                            <a class="dropdown-item" href="{% url 'paquete5:gastos_del_mes' %}">Gastos Mes</a>
+                            <a class="dropdown-item" href="{% url 'paquete5:todos_los_gastos' %}">Gastos Totales</a>   
+
+                        {%else%}
+                            <a class="dropdown-item" href="{% url 'prestamosapp:agregar_gasto' %}">Agregar Gasto</a>
+                            <a class="dropdown-item" href="{% url 'prestamosapp:lista_gastos_del_dia' %}">Gastos Hoy</a>
+                            <a class="dropdown-item" href="{% url 'prestamosapp:gastos_semanales' %}">Gastos Semana</a>
+                            <a class="dropdown-item" href="{% url 'prestamosapp:gastos_del_mes' %}">Gastos Mes</a>
+                            <a class="dropdown-item" href="{% url 'prestamosapp:todos_los_gastos' %}">Gastos Totales</a>
+                        {%endif%}
+                    </details>
+                </li>
+                <li class="faq nav">
+                    <details>
+                        <summary>Mi Dia</summary>
+                        {% if user.username == 'paquete2' %}
+                            <a class="dropdown-item" href="{% url 'paquete2:cobro_del_dia' %}">Cobro del Día</a>
+                            <a class="dropdown-item" href="{% url 'paquete2:historia_cobro' %}">Historial Cobro</a>
+
+                        {%elif user.username == 'paquete3'%}
+                            <a class="dropdown-item" href="{% url 'paquete3:cobro_del_dia' %}">Cobro del Día</a>
+                            <a class="dropdown-item" href="{% url 'paquete3:historia_cobro' %}">Historial Cobro</a>
+                        
+                        {%elif user.username == 'paquete4'%}
+                            <a class="dropdown-item" href="{% url 'paquete4:cobro_del_dia' %}">Cobro del Día</a>
+                            <a class="dropdown-item" href="{% url 'paquete4:historia_cobro' %}">Historial Cobro</a>
+
+                        {%elif user.username == 'paquete5'%}
+                            <a class="dropdown-item" href="{% url 'paquete5:cobro_del_dia' %}">Cobro del Día</a>
+                            <a class="dropdown-item" href="{% url 'paquete5:historia_cobro' %}">Historial Cobro</a>
+                    
+                        {%else%}
+                            <a class="dropdown-item" href="{% url 'prestamosapp:cobro_del_dia' %}">Cobro del Día</a>
+                            <a class="dropdown-item" href="{% url 'prestamosapp:historia_cobro' %}">Historial Cobro</a>
+                        {%endif%}
+                    </details>
+                </li>
+                <li class="faq">
+                    <details>
+                        <summary>Liquidacion</summary>
+                        {%if user.username == 'paquete2' %}
+                            <a class="dropdown-item" href="{% url 'paquete2:liquidacion_del_dia' %}">Liquidación del Día</a>
+                            <a class="dropdown-item" href="{% url 'paquete2:liquidacion_total' %}">Liquidación Total</a>
+
+                        {%elif user.username == 'paquete3'%}
+                            <a class="dropdown-item" href="{% url 'paquete3:liquidacion_del_dia' %}">Liquidación del Día</a>
+                            <a class="dropdown-item" href="{% url 'paquete3:liquidacion_total' %}">Liquidación Total</a>
+                            
+                        {%elif user.username == 'paquete4'%}
+                            <a class="dropdown-item" href="{% url 'paquete4:liquidacion_del_dia' %}">Liquidación del Día</a>
+                            <a class="dropdown-item" href="{% url 'paquete4:liquidacion_total' %}">Liquidación Total</a>
+
+                        {%elif user.username == 'paquete5'%}
+                            <a class="dropdown-item" href="{% url 'paquete5:liquidacion_del_dia' %}">Liquidación del Día</a>
+                            <a class="dropdown-item" href="{% url 'paquete5:liquidacion_total' %}">Liquidación Total</a>
+    
+
+                        {%else%}
+                            <a class="dropdown-item" href="{% url 'prestamosapp:liquidacion_del_dia' %}">Liquidación del Día</a>
+                            <a class="dropdown-item" href="{% url 'prestamosapp:liquidacion_total' %}">Liquidación Total</a>
+                        {%endif%}
+                    </details>
+
+                    
+                </li>
+                    {%if user.username == 'paquete2' %}
+                    
+                        <summary class="summary_agregar_cliente"><li>  <a class="dropdown-item agregar_cliente_button" href="{% url 'logout' %}">Log out</a></li></summary>
+                        <summary class="summary_agregar_cliente"><li><a class="dropdown-item agregar_cliente_button" href="{% url 'paquete2:agregar_cliente' %}">Agregar Cliente</a></li></summary>
+                
+                    {% elif user.username == 'paquete3' %}                       
+                        <summary class="summary_agregar_cliente"><li>  <a class="dropdown-item agregar_cliente_button" href="{% url 'logout' %}">Log out</a></li></summary>
+                        <summary class="summary_agregar_cliente"><li><a class="dropdown-item agregar_cliente_button" href="{% url 'paquete3:agregar_cliente' %}">Agregar Cliente</a></li></summary>   
+
+                    {% elif user.username == 'paquete4' %}                       
+                        <summary class="summary_agregar_cliente"><li>  <a class="dropdown-item agregar_cliente_button" href="{% url 'logout' %}">Log out</a></li></summary>
+                        <summary class="summary_agregar_cliente"><li><a class="dropdown-item agregar_cliente_button" href="{% url 'paquete4:agregar_cliente' %}">Agregar Cliente</a></li></summary>
+
+                    {% elif user.username == 'paquete5' %}                       
+                        <summary class="summary_agregar_cliente"><li>  <a class="dropdown-item agregar_cliente_button" href="{% url 'logout' %}">Log out</a></li></summary>
+                        <summary class="summary_agregar_cliente"><li><a class="dropdown-item agregar_cliente_button" href="{% url 'paquete5:agregar_cliente' %}">Agregar Cliente</a></li></summary>
+
+                    {%else%}                        
+                        <summary class="summary_agregar_cliente"><li><a class="dropdown-item agregar_cliente_button cambiar_background" href="{% url 'login' %}">Iniciar Sesion</a></li></summary>
+                        <summary class="summary_agregar_cliente"><li><a class="dropdown-item agregar_cliente_button cambiar_background" href="{% url 'prestamosapp:agregar_cliente' %}">Agregar Cliente</a></li></summary>
+                            
+                    {%endif%}   
+            </ul>
+            
+        </nav>
+        
+    </header>
+
+      {%comment%} ESTE ES EL INPUT DEL BUSCADOR {%endcomment%}
+    <input type="text" id="search" onkeyup="searchClientes()" placeholder="Busca por Nombre"> {%comment%} FIN INPUT BUSCADOR    
+    {%endcomment%}
+    <h2>Clientes</h2>
+    <div class="caja_principal_body">
+        <table id="client-table" class="table">
+            <thead>
+                <tr>
+                    
+                    <th>Opciones</th>
+                    <th class="orden">Orden</th>
+                    <th>Nombre</th>
+                    
+                    <th>Saldo</th>
+                    <th>Cuota Diaria</th>                    
+                    <th>Agregar Pagos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %} {%comment%} NOMAS PONIENDOLE LA CONDICIONAL AL tr OMG {%endcomment%}
+                <tr class="{% if cliente.is_overdue %}overdue{% endif %}">{%comment%} SI ESTA ATRASADO {%endcomment%}
+                    <td>
+                        <div class="faq">
+                            <details class="details_menu_cliente">
+                                <summary><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></summary>
+                                {% if user.username == 'paquete2' %}
+                                        <a href="{% url 'paquete2:edit_cliente' cliente.id %}" class="btn btn-primary">Edit Client</a>
+                                        <a href="{% url 'paquete2:client_detail' cliente.id %}" class="btn btn-primary">Historial de Pagos</a>
+                                        
+                                        <form method="POST" action="{% url 'paquete2:cliente_list' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="move_to_saldo_cero" value="true">
+                                            <button class="btn btn-primary" type="submit">Lista Cancelados</button>
+                                        </form>
+
+                                        <a href="{% url 'paquete2:informacion_cliente' cliente.pk %}" class="btn btn-primary">Full Info</a>
+
+                                {% elif user.username == 'paquete3' %}
+                                        <a href="{% url 'paquete3:edit_cliente' cliente.id %}" class="btn btn-primary">Edit Client</a>
+                                        <a href="{% url 'paquete3:client_detail' cliente.id %}" class="btn btn-primary">Historial de Pagos</a>
+                                        
+                                        {%comment%}ESTE FORM TRABAJA EN CONJUNTO CON EL METODO PARA QUE LOS CLIENTES CANCELADOS SE TRANSFIERAN A LA LISTA DE CANCELADOS{%endcomment%}
+                                        <form method="POST" action="{% url 'paquete3:cliente_list' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="move_to_saldo_cero" value="true">
+                                            <button class="btn btn-primary" type="submit">Lista Cancelados</button>
+                                        </form>
+
+                                        <a href="{% url 'paquete3:informacion_cliente' cliente.pk %}" class="btn btn-primary">Full Info</a>
+
+                                {% elif user.username == 'paquete4' %}
+                                        <a href="{% url 'paquete4:edit_cliente' cliente.id %}" class="btn btn-primary">Edit Client</a>
+                                        <a href="{% url 'paquete4:client_detail' cliente.id %}" class="btn btn-primary">Historial de Pagos</a>
+                                        
+                                        <form method="POST" action="{% url 'paquete4:cliente_list' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="move_to_saldo_cero" value="true">
+                                            <button class="btn btn-primary" type="submit">Lista Cancelados</button>
+                                        </form>
+
+                                        <a href="{% url 'paquete4:informacion_cliente' cliente.pk %}" class="btn btn-primary">Full Info</a>
+
+                                {% elif user.username == 'paquete5' %}
+                                        <a href="{% url 'paquete5:edit_cliente' cliente.id %}" class="btn btn-primary">Edit Client</a>
+                                        <a href="{% url 'paquete5:client_detail' cliente.id %}" class="btn btn-primary">Historial de Pagos</a>
+                                
+                                        <form method="POST" action="{% url 'paquete5:cliente_list' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="move_to_saldo_cero" value="true">
+                                            <button class="btn btn-primary" type="submit">Lista Cancelados</button>
+                                        </form>
+
+                                        <a href="{% url 'paquete5:informacion_cliente' cliente.pk %}" class="btn btn-primary">Full Info</a>
+
+                                {%else%}       
+                                        <a href="{% url 'prestamosapp:edit_cliente' cliente.id %}" class="btn btn-primary">Edit Client</a>
+                                        <a href="{% url 'prestamosapp:client_detail' cliente.id %}" class="btn btn-primary">Historial de Pagos</a>
+
+                                        
+                                        <form method="POST" action="{% url 'prestamosapp:cliente_list' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="move_to_saldo_cero" value="true">
+                                            <button class="btn btn-primary" type="submit">Lista Cancelados</button>
+                                        </form>
+                                        <a href="{% url 'prestamosapp:informacion_cliente' cliente.pk %}" class="btn btn-primary">Full Info</a>
+                                {%endif%}
+                            </details>
+                        </div>
+                    </td>
+                    <td>{{ cliente.order }}</td>
+                    <td>{{ cliente.nombre }}</td>
+
+                    <td>{{ cliente.saldo }}</td>
+                    <td>{{ cliente.couta_diaria }}</td>
+                    <td>
+                        {%if user.username == 'paquete2' %}
+                            <form class="form_payment" method="post" action="{% url 'paquete2:cliente_list' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="cliente_id" value="{{ cliente.id }}">
+                                <input class="form_payment" type="number" name="payment_amount" step="0.01" required>
+                                <button type="submit" class="btn btn-primary">Pagar</button>
+                            </form>
+
+                        {%elif user.username == 'paquete3'%}
+                            <form class="form_payment" method="post" action="{% url 'paquete3:cliente_list' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="cliente_id" value="{{ cliente.id }}">
+                            <input class="form_payment" type="number" name="payment_amount" step="0.01" required>
+                            <button type="submit" class="btn btn-primary">Pagar</button>
+                            </form>
+
+                        {%elif user.username == 'paquete4'%}
+                            <form class="form_payment" method="post" action="{% url 'paquete4:cliente_list' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="cliente_id" value="{{ cliente.id }}">
+                            <input class="form_payment" type="number" name="payment_amount" step="0.01" required>
+                            <button type="submit" class="btn btn-primary">Pagar</button>
+                            </form>
+
+
+                        {%elif user.username == 'paquete5'%}
+                            <form class="form_payment" method="post" action="{% url 'paquete5:cliente_list' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="cliente_id" value="{{ cliente.id }}">
+                            <input class="form_payment" type="number" name="payment_amount" step="0.01" required>
+                            <button type="submit" class="btn btn-primary">Pagar</button>
+                            </form>
+
+                        {%else%}
+                            <form class="form_payment" method="post" action="{% url 'prestamosapp:cliente_list' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="cliente_id" value="{{ cliente.id }}">
+                                <input class="form_payment" type="number" name="payment_amount" step="0.01" required>
+                                <button type="submit" class="btn btn-primary">Pagar</button>
+                            </form>
+                        {%endif%}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No clients available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-right"><strong>Total Cartera:</strong></td>
+                    <td><strong>${{ total_pending|floatformat:2 }}</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</body>
+</html>

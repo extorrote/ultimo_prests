@@ -1,0 +1,570 @@
+html{
+    background-color: #ebf4f6f9;
+    background-image: url(/static/images.gif/verde.webp);
+    background-blend-mode:screen;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    
+    
+}
+
+/* Centered Container */
+.container {
+    max-width: 960px; /* Adjust this value to control the maximum width */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px;
+    
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    
+
+}
+
+/* ########## BUSCADOR ########*/
+
+
+/* ANIMACION */
+@keyframes flipInY {
+    from {
+      -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+      transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      opacity: 0;
+    }
+  
+    40% {
+      -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+      transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+    }
+  
+    60% {
+      -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+      transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+      opacity: 1;
+    }
+  
+    80% {
+      -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+      transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    }
+  
+    to {
+      -webkit-transform: perspective(400px);
+      transform: perspective(400px);
+    }
+  }
+  
+  
+  
+/* TITULO CLIENTES */
+h2{
+    margin-left:40px;
+}
+
+@media screen and (max-width:480px){
+    h2{
+        margin-left:2px;
+    }
+}
+  
+  
+
+.header__logo-container {
+    flex: 1;
+    display:flex;
+    margin:auto;
+    user-select: none;
+    animation:flipInY 2s .1s ;
+    max-width:180px;
+}
+
+.header__logo-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.header__open-nav-button {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Navigation Styles */
+.header__nav {
+    flex: 2;
+}
+
+.header__nav-list {
+    display: flex;
+    
+    justify-content: space-around;
+    
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.header__nav-list a {
+    text-decoration: none;
+    color: #333;
+    padding: 0.5rem 1rem;
+    display: block;
+    
+}
+
+.header__nav-list a:hover {
+    background-color: #117a8b;
+    background-color: #83e4f374;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header__logo-container {
+        margin-bottom: 1.5rem;
+    }
+
+    .header__open-nav-button {
+        display: block;
+    }
+
+    .header__nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+    }
+
+    .header__nav.active {
+        display: flex;
+    }
+
+    .header__nav-list {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .header__nav-list a {
+        padding: 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header__logo-container img {
+        max-width: 210px;
+        margin:auto;
+    }
+
+    .header__open-nav-button {
+        font-size: 1.5rem;
+    }
+}
+
+/* Style for checkbox hack (toggle menu) */
+.header__checkbox {
+    display: none;
+    
+}
+
+.header__checkbox:checked ~ .header__nav {
+    display: flex;
+}
+
+/* ESTILOS BUSCADOR */ 
+#search{
+    display:flex;
+    margin:auto;
+    width:50%;
+    height:40px;
+    margin-top:20px;
+    box-shadow: 0 0 2px gray;
+    animation:flipInY 2s .1s;
+}
+
+
+@media screen and (max-width:500px){
+    #search{
+        width:90%;
+        height:30px;
+    }
+}
+
+/* ESTA ES LA TABLA GENERAL DONDE ESTOY MOSTRANDO TODOS LOS CLIENTES */
+.table {
+    width: 95%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    margin:auto;
+}
+
+
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    
+}
+@media screen and (max-width:480px){
+    th:last-child{
+        width:200px;
+    }
+    }
+
+.form_payment{
+    width:80px;
+    
+    margin-bottom:2px;
+}
+.form_payment>.btn {
+    display:flex;
+    margin:auto;
+}
+li  {
+    color:white;
+}
+
+
+th {
+    background-color: #f4f4f4;
+}
+/*AQUI LE DI ESTILOS th de AGREGAR PAGOS */
+th:last-child{
+    width:100px;
+    
+}
+
+
+/* Button Styles */
+.btn {
+    padding: 8px 12px;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    
+}
+
+.agregar_cliente_button{
+    justify-content: space-evenly;
+    margin-left:20px;
+
+    
+}
+
+.btn-primary {
+    background-color: #17a2b8;
+    
+}
+
+.btn-primary:hover {
+    background-color: #088395;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+}
+
+.btn-info:hover {
+    background-color: #117a8b;
+}
+
+
+.btn-primary{/*ACA LE ESTOY PONIENDO LA ANIMACION A LOS LINKS TAMBIEN*/
+    animation: aparecer_parriba 1s .3s both;
+}
+
+
+/* Collapsible Details */
+.collapse {
+    display: none;
+}
+
+.collapse.show {
+    display: table-row;
+}
+
+.card-body {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.card-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* FAQ Styles */
+.faq {
+    background-color: var(--bg-color);
+    max-width: clamp(300px, 70%, 700px);
+    margin: auto;
+}
+
+details {
+    background-color: var(--faq-color);
+    margin: 7px;
+    padding: 7px;
+    max-height: 34px;
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+    animation: aparecer 2s;
+    color:white;
+    border-radius: 10px;
+    background-color: #17a2b8;
+    
+}
+
+/*ESTO LO VOY A HACER PARA QUE CUANDO ABRA EL DETAILS YA SE LE VAYA EL COLOR*/
+
+details[open] {/*ESTOS SON LOS LINKS QUE TENGO DENTRO DEL details*/
+    background-color: var(--faq-color);
+    margin: 7px;
+    padding: 7px;
+    max-height: 34px;
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+    animation: aparecer 2s;
+    color:white;
+    margin-bottom:2px;
+    
+}
+
+details[open] .btn {
+    display:flex;
+    width:40%;
+
+    align-items: center;
+    margin:auto;
+    margin-bottom: 4px;
+}
+
+
+details[open] summary { /*CUANDO EL DETAILS ESTE ABIERTO ACCEDE A SUMMARY Y DALE ESTOS DISENOS, ADENTRO DE ESTO  TENGO LOS LINKS*/  
+    margin-bottom: 7px;
+    background-color: #17a2b8;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:150px;
+    height:40px;
+    color:white;
+    border-radius: 5px;
+    
+}
+details[open] .btn-primary{/*aqui cuando abro el details los urls van a ser de 130px*/
+    width:130px;
+}
+details >a {/*CON ESTE CENTRE EL TEXTO DE LOS BOTONES DENTRO DE details*/
+    justify-content: center;
+}
+
+.dropdown-item{/*ESTOS SON LOS LINKS QUE ESTAN DENTRO DEL SUMMARY*/
+    margin-bottom: 7px;
+    background-color: #17a2b8;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:20px;
+    color:white;
+    border-radius: 5px;
+    animation: aparecer 1s .3s both;
+}
+
+
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    50% {
+        border-top: 1px solid transparent;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes aparecer_parriba {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        border-top: 1px solid transparent;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+details[open] {
+    max-height: 400px;
+
+   
+}
+@media screen and (max-width:500px){
+    .header__checkbox:checked summary{
+       color:red;
+    }
+}
+details[open] .content {
+    animation: aparecer 1s .3s both;
+}
+
+.content {
+    padding: 5px 10px;
+    margin: 10px;
+    margin-bottom: 0;
+    border-top: 1px solid var(--bg-color);
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+summary {
+    user-select: none;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    
+}
+
+summary::marker {
+    content: '';
+}
+
+summary::before {
+    content: '';
+    color: #ffb18c;
+    position: absolute;
+    right: 0;
+    font-weight: 900;
+}
+
+details[open] summary::before {
+    content: '';
+    
+}
+
+a.dropdown-item {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+a.dropdown-item:hover {
+    background-color: var(--hover-bg-color);
+}
+
+details b {
+    background-color: var(--dark-color);
+    padding: 1px 3px;
+    color: #fff;
+}
+
+details:nth-child(2) b {
+    background-color: #48e;
+}
+
+details:nth-child(3) b {
+    background-color: #4b7;
+}
+
+/* Responsive Adjustments for Tables and Buttons */
+@media (max-width: 768px) {
+    .table {
+        font-size: 0.875rem;
+    }
+
+    .table th, .table td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 6px 10px;
+        font-size: 0.875rem;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+}
+
+
+/*AQUI HARE QUE DESAPAREZCA EL APELLIDO EN CELULAR*/
+@media screen and (max-width:660px){
+        th:nth-child(5),td:nth-child(5){
+            display:none;
+        }
+        .orden{
+            width:30px;
+        }
+
+        
+}
+
+
+/* ESTO ES PARA QUE CAMBIE EL BACKROUND A ROJO SI EL CLIENTE ESTA ATRASADO*/
+.overdue {
+    background-color: #f8d7da; /* Light red background for overdue clients */
+    color: #721c24; /* Dark red text color for better contrast */
+}
+
+.overdue td {
+    border-color: #f5c6cb; /* Light red border color */
+}
+
+
+.header__nav-list a.dropdown-item:hover {
+    background-color: #088395;/* Change to the color you want */
+    color: #fff; /* Optionally, change the text color on hover */
+}
+
+.summary_agregar_cliente{
+    display:flex;   
+    margin:auto;
+}
+
+.cambiar_background{
+    background-color:#088395; 
+    display:flex;
+    margin:10px auto;
+
+}
+
+
+
+
+

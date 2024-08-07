@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="author" content="CHRISTHIAN STEPHEN">
+
+    <title>Desarrollo de Páginas y Aplicaciones Web Puerto Vallarta y todo México</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" /><!-- ICONOS GG -->
+    <link rel="stylesheet" href="{% static 'css/cliente_full_info.css' %}">
+    <meta charset="UTF-8">
+    {%comment%}  META TAGS {%endcomment%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="programador" content="christian stephen">
+    <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="content-language" content="en, es">
+    <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+    <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+    <meta property="og:title" content="Puerto Vallarta Web Developer">
+    <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+    <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    {%comment%} FIN  META TAGS {%endcomment%}
+
+
+
+    {%comment%} ESTO ES PARA PODER VISUALIZAR LAS FOTOS {%endcomment%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".fancybox").fancybox({
+                infobar: false,
+                buttons: ['close'],
+                btnTpl: {
+                    close: '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="Close">' +
+                        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>' +
+                        '</button>'
+                }
+            });
+        });
+    </script>
+    {%comment%} ########################################################## {%endcomment%}
+
+</head>
+<body>
+    {% block content %}
+    
+    <div class="container">
+        
+                <h2>Copia el Link si quieres compartir esta información</h2>
+           
+            
+            
+            
+               
+                    <p><strong>Orden:</strong> {{ cliente.order }}</p>
+                    {% if days_since_last_payment is None %}
+                    <p><strong>Días desde el último pago:</strong> No se han realizado pagos aún.</p>
+                    {% else %}
+                        <p><strong>Días Atrasados:</strong> {{ days_since_last_payment }} días</p>
+                    {% endif %}
+                    <p><strong>Nombre:</strong> {{ cliente.nombre }}</p>
+                    <p><strong>Apellidos:</strong> {{ cliente.apellidos }}</p>
+                    <p><strong>Monto:</strong> {{ cliente.monto }}</p>
+                    <p><strong>Monto Más Interés:</strong> {{ cliente.monto_mas_interes }}</p>
+                    <p><strong>Cuota Diaria:</strong> {{ cliente.couta_diaria }}</p>
+                    <p><strong>Saldo:</strong> {{ cliente.saldo }}</p>
+                    <p><strong>Dirección:</strong> {{ cliente.direccion }}</p>
+                    <p><strong>Descripción de la Casa:</strong> {{ cliente.descripcion_casa }}</p>
+                    {% if cliente.foto_casa != 'null' and cliente.foto_casa.url|length >= 1 %}
+                            <a class="fancybox" href="{{ cliente.foto_casa.url }}">
+                                <img src="{{ cliente.foto_casa.url }}" class="thumbnail" />
+                            </a>
+                        
+                    {%else%} <h4> El Cliente No Tiene Foto</h4>
+                      
+                    {% endif %}
+                    <p><strong>Fecha de Creación:</strong> {{ cliente.fecha_de_creacion }}</p>
+                    <p><strong>Última Fecha de Edición:</strong> {{ cliente.ultima_fecha_de_edicion }}</p>
+                    
+                   
+                        </div>
+                </div>
+            
+            
+            <div class="menu">
+                {%if user.username == 'paquete2' %}
+                <a href="{% url 'paquete2:client_detail' cliente.id %}" class="btn">Historial de Pagos</a>
+                <a href="{% url 'paquete2:cliente_list' %}" class="btn">Lista de Clientes</a>
+
+                {% elif user.username == 'paquete3'%}
+                    <a href="{% url 'paquete3:client_detail' cliente.id %}" class="btn">Historial de Pagos</a>
+                    <a href="{% url 'paquete3:cliente_list' %}" class="btn">Lista de Clientes</a>
+
+                {% elif user.username == 'paquete4'%}
+                <a href="{% url 'paquete4:client_detail' cliente.id %}" class="btn">Historial de Pagos</a>
+                <a href="{% url 'paquete4:cliente_list' %}" class="btn">Lista de Clientes</a>
+
+                {% elif user.username == 'paquete5'%}
+                <a href="{% url 'paquete5:client_detail' cliente.id %}" class="btn">Historial de Pagos</a>
+                <a href="{% url 'paquete5:cliente_list' %}" class="btn">Lista de Clientes</a>
+                
+                {%else%}
+                    <a href="{% url 'prestamosapp:client_detail' cliente.id %}" class="btn">Historial de Pagos</a>
+                    <a href="{% url 'prestamosapp:cliente_list' %}" class="btn">Lista de Clientes</a>
+                {%endif%}
+            </div>
+        </div>
+    </main>
+    
+    {% endblock %}
+</body>
+</html>

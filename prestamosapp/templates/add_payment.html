@@ -1,0 +1,78 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Payment</title>
+    {%load static%}
+    {%comment%}  META TAGS {%endcomment%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="programador" content="christian stephen">
+    <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="content-language" content="en, es">
+    <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+    <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+    <meta property="og:title" content="Puerto Vallarta Web Developer">
+    <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+    <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+
+{%comment%} FIN  META TAGS {%endcomment%}
+
+</head>
+<body>
+    <h1>Add Payment for {{ cliente.name }}</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Display form errors if any -->
+        {% if form.errors %}
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <!-- Display the form fields -->
+        <p>
+            <label for="id_payment_amount">Payment Amount:</label>
+            {{ form.payment_amount }}
+        </p>
+        
+        <!-- Submit button -->
+        <button type="submit">Submit Payment</button>
+    </form>
+    
+    <!-- Display existing payments for the cliente -->
+    <h2>Existing Payments</h2>
+    <ul>
+        {% for payment in payments %}
+            <li>{{ payment.payment_amount }} - {{ payment.payment_date }}</li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Link back to cliente list page -->
+    {%if use.username == 'paquete2' %}
+        <p><a href="{% url 'paquete2:cliente_list' %}">Regresar </a></p>
+
+    {%elif  use.username == 'paquete3' %}
+    <p><a href="{% url 'paquete3:cliente_list' %}">Regresar </a></p>
+
+    {%elif  use.username == 'paquete4' %}
+    <p><a href="{% url 'paquete4:cliente_list' %}">Regresar </a></p>
+
+    {%elif  use.username == 'paquete5' %}
+    <p><a href="{% url 'paquete5:cliente_list' %}">Regresar </a></p>
+
+    {%else%}
+        <p><a href="{% url 'prestamosapp:cliente_list' %}">Regresar</a></p>
+    {%endif%}
+</body>
+</html>

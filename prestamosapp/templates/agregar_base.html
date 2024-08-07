@@ -1,0 +1,62 @@
+<!-- agregar_gasto.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    {%load static%}
+    <title>Agregar Base</title>
+    <link rel="stylesheet" href="{%static '/css/add_cliente.css'%}">
+    {%comment%}  META TAGS {%endcomment%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="programador" content="christian stephen">
+    <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="content-language" content="en, es">
+    <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+    <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+    <meta property="og:title" content="Puerto Vallarta Web Developer">
+    <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+    <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+
+{%comment%} FIN  META TAGS {%endcomment%}
+
+</head>
+<body>
+    <h1>Agregar Base</h1>
+    <div class="form_wrapper">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn" type="submit">Agregar Base</button>
+        <nav class="agregar_gastos_menu">
+            {%if user.username == 'paquete2' %}
+                <a class="btn" href="{% url 'paquete2:historial_base' %}">
+                    Ver Movimientos de Base
+                </a>
+            {%elif user.username == 'paquete3' %}
+            <a class="btn" href="{% url 'paquete3:historial_base' %}">
+                Ver Movimientos de Base
+            </a>
+
+            {%elif user.username == 'paquete4' %}
+            <a class="btn" href="{% url 'paquete4:historial_base' %}">
+                Ver Movimientos de Base
+            </a>
+
+            {%elif user.username == 'paquete5' %}
+            <a class="btn" href="{% url 'paquete5:historial_base' %}">
+                Ver Movimientos de Base
+            </a>
+
+            {%else%}
+                <a class="btn" href="{% url 'prestamosapp:historial_base' %}">
+                    Ver Movimientos de Base
+                </a>
+            {%endif%}
+            </nav>
+    </form>
+</div>
+    
+</body>
+</html>

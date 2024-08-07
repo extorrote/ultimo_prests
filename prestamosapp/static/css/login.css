@@ -1,0 +1,200 @@
+body{
+  
+    background-image: radial-gradient(#1290ad,#18233fa7 );
+    background-blend-mode:screen;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+  
+}
+
+
+
+
+@media screen and (max-width:500px){
+body{
+  
+    background-image: radial-gradient(#1290ad,#18233fa7 80%),url(/static/images.gif/verde.webp);
+    background-blend-mode:screen;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+}
+}
+/*################################ FORM LOGIN ################################*/
+.form__login{
+    height:115.5vh;
+    margin-top: -200px;
+    
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:30px 0;
+    container-name: form;
+    container-type: inline-size;
+
+}
+
+
+
+@media screen and (max-width:500px){
+.form__login{
+
+    height: 99vh;
+    margin-top:-50px;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:30px 0;
+    container-name: form;
+    container-type: inline-size;
+    padding-bottom:18px; /*CON ESTO HICE QUE SE ESCONDIERA LA BOLITA DE ATRAS */
+}
+}
+
+.form__title{
+    color:#fffd;
+    font-size: 2.6rem;
+    margin-bottom:0;
+    
+}
+
+
+.form__form-login{
+    min-width:400px;
+    padding:12px;
+    max-width: 600px;
+    width:50%;/*CON ESTE HACE QUE NO SE DEFORME CUANDO ACHICO LA PANTALLA*/
+    min-width:370px;
+    display:grid;/*ESTO SE LO PUSIMOS DESPUES PARA TRABAJAR CON LOS MEDIA QUERIES */
+    gap:12px;
+    color:#e2eaff;
+    background-image:linear-gradient(#1290ad,#18233fa7),url(/static/images/fondo-candados.jpg);
+    background-position: -300px;
+    box-shadow: 0px 0px 12px #0006;
+    padding:12px;
+    border-radius: 12px;
+    
+
+
+}
+
+
+@media screen and (max-width:480px){
+    .form__form-login{ margin:auto;
+                    overflow-x:hidden;
+                    }
+
+}
+
+.form__login-input-container :is(input){
+    width:96%;
+    padding: 9px ;
+    font-size: 16px;
+    margin:4px;
+    border:none;
+    box-shadow: 2pk 2px 4px #0003 ;
+    border-radius: 7px;
+
+}
+
+/* ################################# BOTON login Neon ############################################*/
+
+.wrapper{/*ESTOS ATRIBUTOS SE LE DAN A LA CAJA PADRE*/
+    display:flex;
+    flex-direction: column;
+    height:5vh;
+    margin-top:10px;
+    justify-content: space-evenly;
+    align-items: center;
+    container-name: quitar-margin;
+    container-type: inline-size;
+}
+
+
+
+.btn{
+    padding:10px 40px;
+    background-color: transparent;
+    color:white;
+    border-radius: 6px;
+    letter-spacing: 3px;
+    position:relative;/*ESTO ES PARA QUE TOMEN COMO REFERENCIA LA CAJA DEL wrapper*/
+}
+
+
+
+
+.btn-2{
+    border:3px solid #fff9;
+    color:#fff9;
+    margin-top:5px;
+}
+
+.btn-2:hover{
+    animation: parpadear 1s infinite alternate backwards;
+}
+
+@keyframes parpadear {
+    0%{
+        color:#fff3;
+        border:1px solid #fff3;
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+    25%{
+        border-color: #48e;
+        color: rgba(111,168, 255);
+        box-shadow: 0px 0px 6px #48e3 , 0px 0px 16px #48e3;
+        text-shadow: 0px 0px 6px #48ee , 0px 0px 3px rgba(159,197,255,0.454);
+    }
+
+    30%{
+        color:#fff3;
+        border:1px solid #fff3;
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+    35%{
+
+        color: rgba(111,168, 255);
+
+        text-shadow: 0px 0px 6px #48ee , 0px 0px 3px rgba(159,197,255,0.454);
+    }
+
+    46%{
+        color:#fff3;
+        border:1px solid #fff3;
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+    60%{
+        border-color: #48e;
+
+        box-shadow: 0px 0px 6px #48e3 , 0px 0px 16px #48e3;
+
+    }
+
+    78%{
+        color:#fff3;
+        border:1px solid #fff3;
+        text-shadow: none;
+        box-shadow: none;
+    }
+
+    100%{
+
+        color: rgba(111,168, 255);
+
+        text-shadow: 0px 0px 6px #48ee , 0px 0px 3px rgba(159,197,255,0.454);
+    }
+}
+/*############################################## FIN boton NEON /**************************************************

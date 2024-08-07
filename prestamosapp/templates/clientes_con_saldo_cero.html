@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    {%comment%}  META TAGS {%endcomment%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="programador" content="christian stephen">
+    <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="content-language" content="en, es">
+    <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+    <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+    <meta property="og:title" content="Puerto Vallarta Web Developer">
+    <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+    <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+
+    {%comment%} FIN  META TAGS {%endcomment%}
+
+    <title>Clientes Cancelados</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static '/css/estilos_clientes_borrados.css' %}">
+
+    {% comment %} ESTO ES PARA EL BUSCADOR EN TIEMPO REAL {% endcomment %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function searchClientes() {
+                const query = document.getElementById('search').value.toLowerCase();
+                const rows = Array.from(document.querySelectorAll('#client-table tbody tr')); // Convert NodeList to Array
+                let matchedRow = null;
+
+                rows.forEach(row => {
+                    const nameCell = row.querySelector('td:nth-child(2)'); // Changed to nth-child(2) based on your table structure
+                    const name = nameCell.textContent.toLowerCase();
+
+                    if (name.includes(query)) {
+                        row.style.display = ''; // Show the row
+                        if (!matchedRow) {
+                            matchedRow = row;
+                        }
+                    } else {
+                        row.style.display = 'none'; // Hide the row
+                    }
+                });
+
+                if (matchedRow) {
+                    const tableBody = document.querySelector('#client-table tbody');
+                    tableBody.prepend(matchedRow); // Move the matched row to the top
+                }
+            }
+
+            document.getElementById('search').addEventListener('keyup', searchClientes); // Attach event listener
+        });
+    </script>  
+    {% comment %} FIN DE SCRIPT BUSCADOR {% endcomment %}
+</head>
+<body>
+    <div class="container">
+        {% comment %} ESTE ES EL INPUT DEL BUSCADOR {% endcomment %}
+        <input type="text" id="search" placeholder="Busca por Nombre"> 
+        {% comment %} FIN INPUT BUSCADOR {% endcomment %}
+        <div class="card">
+            <div class="card-header">
+                Clientes Cancelados
+            </div>
+            <div class="card-body">
+                {% if clientes %}
+                <table class="table table-striped" id="client-table">
+                    <thead>
+                        <tr>
+                            <th>Orden</th>
+                            <th>Nombre</th>
+                            <th>Saldo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.order }}</td>
+                            <td>{{ cliente.nombre }}</td>
+                            <td>{{ cliente.saldo }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No hay clientes con saldo cero.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="text-center">No hay clientes Cancelados aún.</p>
+                {% endif %}
+
+                <div class="menu">
+                    {% if user.username == 'paquete2' %}
+                        <a class="btn" href="{% url 'paquete2:cliente_list' %}">Lista Clientes</a>
+
+                    {%elif user.username == 'paquete3' %}
+                            <a class="btn" href="{% url 'paquete3:cliente_list' %}">Lista Clientes</a>
+
+                    {%elif user.username == 'paquete4' %}
+                    <a class="btn" href="{% url 'paquete4:cliente_list' %}">Lista Clientes</a>
+
+                    {%elif user.username == 'paquete5' %}
+                    <a class="btn" href="{% url 'paquete5:cliente_list' %}">Lista Clientes</a>
+
+                    {% else %}
+                        <a class="btn" href="{% url 'prestamosapp:cliente_list' %}">Lista Clientes</a>
+                    {% endif %}
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

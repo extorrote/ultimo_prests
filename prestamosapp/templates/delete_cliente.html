@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    {%comment%}  META TAGS {%endcomment%}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="programador" content="christian stephen">
+        <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+        <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="content-language" content="en, es">
+        <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+        <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+        <meta property="og:title" content="Puerto Vallarta Web Developer">
+        <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+        <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    {%comment%} FIN  META TAGS {%endcomment%}
+
+    <title>Delete Client</title>
+    <style>
+    body{
+    background-color: #E1F7F5;
+    
+    }
+
+    .form_wrapper{
+        box-sizing: border-box;
+        max-width: 500px;
+        margin: 5px auto;
+        padding: 20px;
+        background-color: #117b8bc8;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: -700px ;
+        box-shadow: 0px 0px 10px white;
+        max-height: 524px;
+        margin-top: 140px;
+    }
+
+        .btn {
+        display: inline;
+        width:45%;
+        height: 40px;
+        font-size: 16px;
+        color: #fff;
+        
+        border:none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        
+        font-size: 25px;
+        background-color: rgba(255, 0, 0, 0.432);
+        
+        
+        }
+        /*ESTE BOTON ME TOCO HACERLO APARTE PORQUE ME ESTABA ELIMINANDO EL CLIENTE ASI LE DIERA CANCELAR*/
+        .cancelar{
+        display: flex;
+        width:40%;
+        height: 40px;
+        font-size: 16px;
+        color: #fff;
+        
+        border:none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        
+        font-size: 25px;
+        background-color: rgba(255, 0, 0, 0.432);
+        float:right;
+        justify-content:center;
+        align-items:center;
+        margin-right:10px;
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+        }
+        }
+        h1,p{
+            color:white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="form_wrapper">
+    <h1>Borrar Cliente</h1>
+    <p>Estas Seguro Que Quieres Borrar a "{{ cliente.nombre }}"?</p>
+    
+        {%if user.username == 'paquete2' %}
+            <form method="post" action="{% url 'paquete2:borrar_cliente' cliente.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn ">Si</button>
+                <a href="{% url 'paquete2:cliente_list' %}" class="cancelar">Cancelar</a>
+            </form>
+
+        {% elif %}
+            <form method="post" action="{% url 'paquete3:borrar_cliente' cliente.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn ">Si</button>
+                <a href="{% url 'paquete3:cliente_list' %}" class="cancelar">Cancelar</a>
+            </form> 
+            
+        {% elif %}
+            <form method="post" action="{% url 'paquete4:borrar_cliente' cliente.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn ">Si</button>
+                <a href="{% url 'paquete4:cliente_list' %}" class="cancelar">Cancelar</a>
+            </form>  
+
+        {% elif %}
+            <form method="post" action="{% url 'paquete5:borrar_cliente' cliente.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn ">Si</button>
+                <a href="{% url 'paquete5:cliente_list' %}" class="cancelar">Cancelar</a>
+            </form>  
+        
+        
+        {%else%}
+            <form method="post" action="{% url 'prestamosapp:borrar_cliente' cliente.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn ">Si</button>
+                <a href="{% url 'prestamosapp:cliente_list' %}" class="cancelar">Cancelar</a>
+            </form>
+        {%endif%}
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    {%comment%}  META TAGS {%endcomment%}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="programador" content="christian stephen">
+      <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+      <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+      <meta name="robots" content="index, follow">
+      <meta http-equiv="content-language" content="en, es">
+      <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+      <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+      <meta property="og:title" content="Puerto Vallarta Web Developer">
+      <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+      <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    {%comment%} FIN  META TAGS {%endcomment%}
+
+    <title>Log in</title>
+    <link rel="stylesheet" href="{%static 'css/login.css'%}">
+</head>
+<body>
+    
+
+    
+
+
+    
+<section class="form__login">
+  <h2 class="form__title">Log in</h2>
+  <form class="form__form-login" method="POST"action="">
+      <div class="form__login-input-container">
+
+    {% csrf_token %}
+    <h2 class="identificate"> Identificate </h2> 
+ <label class="label-login"for="username"> Usuario : </label>
+  <input class="input-username-login"type="text" name="username"/>
+
+  <label class="label-login" for="password"> Contraseña : </label>
+ <input  class="input-login" type="password" name="password"/>
+      
+ <div class="wrapper"><!--ESTO ES PARA SEPARAR LOS BOTONES-->
+  <div class="button-container">
+  <div class="button-container">
+      <button class="btn btn-2" type="submit">Log in</button>
+  </div>
+
+</div><!--ESTA CIERRA EL wrapper-->
+
+
+  
+  </div>
+</form>
+</section>
+
+</body>
+</html>

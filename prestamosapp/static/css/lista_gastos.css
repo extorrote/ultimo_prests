@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    50% {
+        border-top: 1px solid transparent;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes aparecer_parriba {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        border-top: 1px solid transparent;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+details[open] {
+    max-height: 400px;
+   
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height:auto;
+    margin-top:40px;
+}
+
+table {
+    width: 100%;
+    
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.total {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.no-gastos {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #17a2b8;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 1px white;
+    
+}
+
+.button:hover {
+    background-color: #088395;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.5);
+}
+
+
+
+
+summary{  
+    display:block; 
+    font-size: 22px;
+    color:white;
+    margin: 10px auto;
+    justify-content: center;
+    margin: 5px;
+    cursor: pointer;
+}
+
+details {
+    
+    
+    padding: 7px;
+    max-height: 34px;
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+    animation: aparecer 2s;
+    color:white;
+    border-radius: 10px;
+    background-color: #17a2b8;
+    justify-content: center;
+    user-select: none;
+    text-align: center;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+summary {
+   
+    position: relative;
+   
+}
+

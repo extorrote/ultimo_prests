@@ -1,0 +1,63 @@
+<!-- agregar_gasto.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    {%load static%}
+    <title>Agregar Gasto</title>
+    <link rel="stylesheet" href="{%static '/css/add_cliente.css'%}">
+
+    {%comment%}  META TAGS {%endcomment%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="programador" content="christian stephen">
+    <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+    <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="content-language" content="en, es">
+    <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+    <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+    <meta property="og:title" content="Puerto Vallarta Web Developer">
+    <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+    <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+
+    {%comment%} FIN  META TAGS {%endcomment%}
+
+</head>
+<body>
+    <h1>Agregar Gasto</h1>
+    <div class="form_wrapper">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn"type="submit">Guardar</button>
+        <nav class="agregar_gastos_menu">
+    
+        {%if user.username == 'paquete2' %}
+            <a class="btn"href="{% url 'paquete2:lista_gastos_del_dia' %}">Gastos Hoy</a>
+            <a class="btn" href="{% url 'paquete2:gastos_semanales' %}">Gastos Semana</a>
+        
+        {%elif user.username == 'paquete3'  %}
+            <a class="btn"href="{% url 'paquete3:lista_gastos_del_dia' %}">Gastos Hoy</a>
+            <a class="btn" href="{% url 'paquete3:gastos_semanales' %}">Gastos Semana</a>
+
+        {%elif user.username == 'paquete4'  %}
+            <a class="btn"href="{% url 'paquete4:lista_gastos_del_dia' %}">Gastos Hoy</a>
+            <a class="btn" href="{% url 'paquete4:gastos_semanales' %}">Gastos Semana</a>
+
+        {%elif user.username == 'paquete5'  %}
+        <a class="btn"href="{% url 'paquete5:lista_gastos_del_dia' %}">Gastos Hoy</a>
+        <a class="btn" href="{% url 'paquete5:gastos_semanales' %}">Gastos Semana</a>
+
+        {%else%}
+            <a class="btn"href="{% url 'prestamosapp:lista_gastos_del_dia' %}">Gastos Hoy</a>
+            <a class="btn" href="{% url 'prestamosapp:gastos_semanales' %}">Gastos Semana</a>
+        {%endif%}
+            
+        </nav>
+    </form>
+</div>
+    <br>
+
+    </a>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {%load static%}
+    {%comment%}  META TAGS {%endcomment%}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="programador" content="christian stephen">
+        <meta name="description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+        <meta name="keywords" content="Desarrollo Web Puerto Vallarta Mexico, Desarrollador web de aplicaciones web, Sitios web acorde a las necesidades de tu negocio, Desarrollador web, Diseño web, Programación, programador web, Experto en desarrollo y hosting web, desarrollo digital">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="content-language" content="en, es">
+        <meta name="title" content="Desarrollo Web 100% Personalizado | Métodos y Diseño Personalizado Dependiendo de las Necesidades de Tu negocio">
+        <link rel="icon" href="{% static 'images/logo_turqueza.ico' %}" alt="logo pagina">
+
+        <meta property="og:title" content="Puerto Vallarta Web Developer">
+        <meta property="og:image" content="/static/images/logo_turqueza.png" type="image/png">
+        <meta property="og:description" content="Desarrollador web Christian Stephen dedicado a crear sitios y aplicaciones que reflejen los valores y principios de tu negocio por medio del mundo digital. Comprometido con la excelencia técnica y la integridad ética en cada proyecto, utilizando mis habilidades para impactar positivamente en línea con mi trabajo.">
+
+    {%comment%} FIN  META TAGS {%endcomment%}
+
+    {%load static%}
+    <style>
+        body{
+            display:grid;
+            margin-auto;
+            background-color: #E1F7F5;
+            
+        }
+        .content{
+            max-width:500px;
+            position:relative;
+            margin:auto;
+            margin-top:200px;
+        }
+        .menu{
+            position:relative;
+            margin:auto;
+        }
+        .btn {
+            display: inline;
+            width:100%;
+            height: 40px;
+            font-size: 16px;
+            color: #fff;
+            background-color: transparent;
+            border:none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-size: 25px;
+            background-color: #117b8bc8;
+           
+          }
+         .btn:hover, .btn_agregar_gastos:hover{
+            background-color:#3ABEF9;
+         }
+        
+         
+        
+      
+    </style>
+    <title>Cobro del Dia</title>
+</head>
+<body>
+    <div class="content">
+    <h1>Cobro del Dia </h1>
+    <p>Fecha: {{ date }}</p>
+    <p>Desde: {{ start_of_day }} </p>
+    <p> Hasta : {{ end_of_day }}</p>
+    <p>Total Pagos del Dia: {{ total_payments_today|floatformat:2 }}</p>
+    </div>
+    <div class="menu">
+        {% if user.username == 'paquete2' %}
+            <a class="btn" href="{% url 'paquete2:liquidacion_del_dia' %}">Liquidación del Día</a>        
+            <a class="btn" href="{% url 'paquete2:cliente_list' %}">Lista Clientes</a>
+
+        {%elif  user.username == 'paquete3' %}
+            <a class="btn" href="{% url 'paquete3:liquidacion_del_dia' %}">Liquidación del Día</a>        
+            <a class="btn" href="{% url 'paquete3:cliente_list' %}">Lista Clientes</a>
+
+        {%elif  user.username == 'paquete4' %}
+            <a class="btn" href="{% url 'paquete4:liquidacion_del_dia' %}">Liquidación del Día</a>        
+            <a class="btn" href="{% url 'paquete4:cliente_list' %}">Lista Clientes</a>
+
+        {%elif  user.username == 'paquete5' %}
+        <a class="btn" href="{% url 'paquete5:liquidacion_del_dia' %}">Liquidación del Día</a>        
+        <a class="btn" href="{% url 'paquete5:cliente_list' %}">Lista Clientes</a>
+
+
+        {%else%}
+            <a class="btn" href="{% url 'prestamosapp:liquidacion_del_dia' %}">Liquidación del Día</a>        
+            <a class="btn" href="{% url 'prestamosapp:cliente_list' %}">Lista Clientes</a>
+        {%endif%}
+        </div> 
+</body>
+</html>
